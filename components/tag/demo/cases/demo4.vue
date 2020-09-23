@@ -16,7 +16,7 @@
       font-color="#fff"
       style="margin-right:20px;"
     >
-      <md-icon name="right"></md-icon>
+      <!-- <md-icon name="right"></md-icon> -->
     </md-tag>
     <md-tag
       size="large"
@@ -27,7 +27,8 @@
   </div>
 </template>
 
-<script>import {Tag, Icon} from 'mand-mobile'
+<script>// import {Tag, Icon} from 'mand-mobile'
+import {Tag} from 'mand-mobile'
 
 export default {
   name: 'tag-demo',
@@ -37,7 +38,7 @@ export default {
   /* DELETE */
   components: {
     [Tag.name]: Tag,
-    [Icon.name]: Icon,
+    // [Icon.name]: Icon,
   },
 }
 </script>

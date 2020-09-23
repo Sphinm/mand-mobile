@@ -14,7 +14,7 @@
         :class="{'active': category.show}"
         @click="toggleCategory(i, category)">
         {{ category.name }}&nbsp;&nbsp;<span>{{ category.text }}</span>
-        <md-icon name="arrow-right" size="md"></md-icon>
+        <!-- <md-icon name="arrow-right" size="md"></md-icon> -->
       </div>
       <transition name="slide-fade">
         <div class="cg-category-list" v-show="category.show">
@@ -24,7 +24,7 @@
             @click="goToComponent(item.path)">
             <div class="cg-category-item-inner">
               {{ item.name }} - {{ item.text }}
-              <md-icon name="arrow-right" size="sm"></md-icon>
+              <!-- <md-icon name="arrow-right" size="sm"></md-icon> -->
             </div>
           </div>
           <div class="cg-category-item" @click="toggleCategory(i, category)">
@@ -39,12 +39,12 @@
 
 <script>
 import components from './components.json'
-import Icon from '../components/icon'
+// import Icon from '../components/icon'
 
 export default {
   name: 'category',
   components: {
-    [Icon.name]: Icon,
+    // [Icon.name]: Icon,
   },
   data() {
     return {

@@ -6,7 +6,7 @@
     <template v-else>
       <div class="md-nav">
         <p class="home" @click="goToCategory">
-          <md-icon name="home" size="lg"></md-icon>
+          <!-- <md-icon name="home" size="lg"></md-icon> -->
         </p>
         <p class="name" v-text="navTitle"></p>
         <p class="name-zh" v-text="navSubTitle"></p>
@@ -19,12 +19,12 @@
 </template>
 
 <script>
-import Icon from '../components/icon' 
+// import Icon from '../components/icon'
 import './assets/responsive'
 export default {
   name: 'app',
   components: {
-    [Icon.name]: Icon,
+    // [Icon.name]: Icon,
   },
   computed: {
     navTitle() {
