@@ -10,13 +10,15 @@
     >
     </div>
     <div class="md-stepper-number">
-      <input type="tel"
+      <input
+        :type="!isInteger ? 'number' :'tel'"
         :size="contentLength"
         :value="currentNum"
         :readOnly="readOnly"
         @input="$_onInput"
         @focus="$_onFocus"
-        @blur="$_onChange">
+        @blur="$_onChange"
+      />
     </div>
     <div
       class="md-stepper-button md-stepper-button-add"
@@ -176,7 +178,7 @@ export default {
     },
     $_formatNum(value) {
       // @elist
-      value = String(value).replace(/[^0-9.-]/g, '')
+      value = String(value).replace(/[^0-9.-]|^-|^\./g, '')
       return value === '' ? 0 : this.isInteger ? Math.floor(value) : +value
     },
     $_getCurrentNum(value) {
@@ -260,7 +262,7 @@ export default {
 
 .md-stepper-number
   margin 0 4px
-  min-width stepper-width-input
+  width stepper-width-input
   height stepper-height
   padding 0 4px
   text-align center

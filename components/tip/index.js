@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import TipOptions from './tip'
+import TipOptions from './tip.vue'
 import {randomId} from '../_util'
 const Tip = Vue.extend(TipOptions)
 
@@ -76,6 +76,7 @@ export default {
     })
 
     if (firstNode) {
+      firstNode.data = firstNode.data || {}
       const on = (firstNode.data.on = firstNode.data.on || {})
       const nativeOn = (firstNode.data.nativeOn = firstNode.data.nativeOn || {})
 

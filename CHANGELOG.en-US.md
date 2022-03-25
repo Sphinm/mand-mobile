@@ -3,6 +3,61 @@ title: Change Log
 toc: hidden
 ---
 
+### 2.5.20
+
+`2021-07-22`
+
+- Feat
+  - Add more i18n support in the project
+
+### 2.5.19
+
+`2021-05-14`
+
+- Fix
+  - Fix the problem of incorrect image size modification by `image-reader`
+  - Fix the problem that `stepper` can't enter the decimal point
+  - Fix the problem that the `process.env.MAND_ENV` environment variable is not injected correctly
+
+### 2.5.18
+
+`2021-04-02`
+
+- Fix
+  - Fix the problem that the initial value of `stepper` is `-` `.` incorrectly parsed
+  - Fix the problem of incorrect image size modification by `image-reader`
+
+### 2.5.17
+
+`2021-03-02`
+
+- Feat
+  - Add i18n support in the project
+
+### 2.5.16
+
+`2021-02-26`
+
+- Fix
+  - Fix the issue of picture angle correction
+
+### 2.5.15
+
+`2021-02-04`
+
+- Fix
+  - Replace `NODE_ENV` with `MAND_ENV` in some components
+
+### 2.5.14
+
+`2021-01-15`
+
+- Feat
+  - `Dialog` supports passing in `transition` when using static methods[#716](https://github.com/didi/mand-mobile/issues/716)
+- Fix
+  - Fix `Tip` error when no attributes in subcomponent
+  - Fix the conflict of `InputItem` component instance method sharing `debounce` internal variables
+
 ### 2.5.13
 
 `2020-09-17`
