@@ -1,5 +1,6 @@
 import Vue from 'vue'
-import Dialog from './dialog'
+import {t} from '../_locale'
+import Dialog from './dialog.vue'
 
 /* istanbul ignore next */
 const noop = function() {}
@@ -19,6 +20,7 @@ const generate = function({
   iconSvg = false,
   content = '',
   closable = false,
+  transition = 'md-bounce',
   btns = [],
   onShow = noop,
   onHide = noop,
@@ -33,7 +35,7 @@ const generate = function({
       content,
       closable,
       btns,
-      transition: 'md-bounce',
+      transition,
       preventScroll: true,
     },
   }).$mount()
@@ -75,11 +77,12 @@ Dialog.confirm = ({
   icon = '',
   iconSvg = false,
   content = '',
-  cancelText = '取消',
+  cancelText = t('md.dialog.cancel'),
   cancelWarning = false,
-  confirmText = '确定',
+  confirmText = t('md.dialog.confirm'),
   confirmWarning = false,
   closable = false,
+  transition,
   onConfirm = noop,
   onCancel = noop,
   onShow = noop,
@@ -91,6 +94,7 @@ Dialog.confirm = ({
     iconSvg,
     content,
     closable,
+    transition,
     onShow,
     onHide,
     btns: [
@@ -129,9 +133,10 @@ Dialog.alert = ({
   icon = '',
   iconSvg = false,
   content = '',
-  confirmText = '确定',
+  confirmText = t('md.dialog.confirm'),
   closable = false,
   warning = false,
+  transition,
   onConfirm = noop,
   onShow = noop,
   onHide = noop,
@@ -142,6 +147,7 @@ Dialog.alert = ({
     iconSvg,
     content,
     closable,
+    transition,
     onShow,
     onHide,
     btns: [

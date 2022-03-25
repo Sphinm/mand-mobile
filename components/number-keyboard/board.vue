@@ -1,5 +1,8 @@
 <template>
-  <div class="md-number-keyboard-container" :class="type">
+  <div
+    class="md-number-keyboard-container"
+    :class="[type, disabled ? 'disabled' : '']"
+  >
     <div class="keyboard-number">
       <ul class="keyboard-number-list">
         <md-number-key
@@ -13,23 +16,31 @@
           <md-number-key
             class="keyboard-number-item"
             v-if="!hideDot"
-            :value="dotText"
+            :value="duplicateZero ? '0' : dotText"
             @press="$_onNumberKeyClick"
           ></md-number-key>
           <md-number-key
             class="keyboard-number-item"
             :class="{'large-item': hideDot}"
-            :value="keyNumberList[9]"
+            :value="duplicateZero ? '00' : keyNumberList[9]"
             @press="$_onNumberKeyClick"
           ></md-number-key>
-          <li class="keyboard-number-item" v-if="isView"></li>
           <md-number-key
-            v-else
-            class="keyboard-number-item slidedown"
-            no-touch
-            no-prevent
-            @press="$_onSlideDoneClick"
+            class="keyboard-number-item"
+            v-if="duplicateZero"
+            :value="dotText"
+            @press="$_onNumberKeyClick"
           ></md-number-key>
+          <template v-if="!duplicateZero">
+            <li class="keyboard-number-item" v-if="isView"></li>
+            <md-number-key
+              v-else
+              class="keyboard-number-item slidedown"
+              no-touch
+              no-prevent
+              @press="$_onSlideDoneClick"
+            ></md-number-key>
+          </template>
         </template>
         <template v-else>
           <li class="keyboard-number-item no-bg"></li>
@@ -64,6 +75,7 @@
 </template>
 
 <script>import {noop} from '../_util'
+import {t} from '../_locale'
 import Key from './key'
 
 export default {
@@ -89,7 +101,7 @@ export default {
     },
     okText: {
       type: String,
-      default: '确定',
+      default: t('md.number_keyboard.confirm'),
     },
     isView: {
       type: Boolean,
@@ -97,6 +109,13 @@ export default {
     textRender: {
       type: Function,
       default: noop,
+    },
+    disabled: {
+      type: Boolean,
+    },
+    duplicateZero: {
+      type: Boolean,
+      default: false,
     },
   },
 
@@ -130,12 +149,21 @@ export default {
 
     // MARK: events handler, 如 $_onButtonClick
     $_onNumberKeyClick(val) {
+      if (this.disabled) {
+        return
+      }
       this.$emit('enter', val)
     },
     $_onDeleteClick() {
+      if (this.disabled) {
+        return
+      }
       this.$emit('delete')
     },
     $_onConfirmeClick() {
+      if (this.disabled) {
+        return
+      }
       this.$emit('confirm')
     },
     $_onSlideDoneClick() {
@@ -230,4 +258,7 @@ export default {
           justify-content center
           &:active
             background-color number-keyboard-key-confirm-bg-tap
+  &.disabled
+    .keyboard-operate-item.confirm
+      background-color color-text-disabled !important
 </style>
